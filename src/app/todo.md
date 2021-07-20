@@ -2,13 +2,14 @@
 
 Objective: Add nested menu items inside Product menu
 
-Products
-    - Cakes
-        - Tiered
-        - Bento
-    - Muffins
-        - Cupcakes
-        - Piñata
-    - Brownies
-        - Walnut
-        - Nutella
+<ol>
+<li>Products
+    <ol>
+        <li>Cakes
+            <ol>
+        <li>Tiered</li>
+        <li>Bento</li>
+    </ol>
+        </li>
+    </ol>
+</li>
