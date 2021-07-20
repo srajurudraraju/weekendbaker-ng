@@ -11,6 +11,7 @@ export class HeaderComponent {
     {
       text: 'About',
       link: '/about',
+      active: true,
     },
     {
       text: 'Products',
@@ -21,6 +22,8 @@ export class HeaderComponent {
       link: '/order',
     },
   ];
+
+  isLoggedIn: boolean = false;
 
   search: string = '';
 

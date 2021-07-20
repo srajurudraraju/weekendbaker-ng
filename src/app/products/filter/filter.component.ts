@@ -1,0 +1,22 @@
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'wb-filter',
+  template: `<button class="btn btn-link" (click)="sortAsc()">Sort Asc</button>
+    <button class="btn btn-link" (click)="sortDesc()">Sort Desc</button>`,
+})
+export class FilterComponent {
+  //Event emitter to emit the onSort event
+  //onSort emits true for ascending
+  //and false for descending
+  @Output()
+  onSort: EventEmitter<boolean> = new EventEmitter();
+
+  sortAsc() {
+    this.onSort.emit(true);
+  }
+
+  sortDesc() {
+    this.onSort.emit(false);
+  }
+}
