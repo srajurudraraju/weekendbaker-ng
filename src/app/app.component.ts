@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Product } from './types/product';
+import { Component, ViewChild } from '@angular/core';
+import { ProductsComponent } from './products/products.component';
 
 @Component({
   selector: 'wb-root',
@@ -8,30 +8,11 @@ import { Product } from './types/product';
 })
 export class AppComponent {
   title = 'WeekendBaker by PC';
-  products: Product[] = [
-    {
-      name: 'Cheesecake',
-      price: 20.99,
-    },
-    {
-      name: 'Cupcakes',
-      price: 4.99,
-    },
-    {
-      name: 'Bento Cakes',
-      price: 14.99,
-    },
-    {
-      name: 'Cookies',
-      price: 5.99,
-    },
-  ];
+  values = [1, 2, 3];
+  @ViewChild(ProductsComponent)
+  productList?: ProductsComponent;
 
-  sortProducts(isAsc: boolean) {
-    if (isAsc) {
-      this.products = this.products.sort((a, b) => a.price - b.price);
-    } else {
-      this.products = this.products.sort((a, b) => b.price - a.price);
-    }
+  handleSort(isAsc: boolean) {
+    this.productList?.sortProducts(isAsc);
   }
 }

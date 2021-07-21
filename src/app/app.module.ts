@@ -12,6 +12,10 @@ import { ProductsComponent } from './products/products.component';
 import { ProductListComponent } from './products/product-list/productlist.component';
 import { ProductComponent } from './products/product-list/product.component';
 import { FilterComponent } from './products/filter/filter.component';
+import { SocialComponent } from './footer/social/social.component';
+import { CopyrightComponent } from './footer/copyright/copyright.component';
+import { LogDirective } from './directives/log.directive';
+import { LooperDirective } from './directives/looper.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { FilterComponent } from './products/filter/filter.component';
     ProductListComponent,
     ProductComponent,
     FilterComponent,
+    SocialComponent,
+    CopyrightComponent,
+    LogDirective,
+    LooperDirective,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

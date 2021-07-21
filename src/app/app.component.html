@@ -1,3 +1,11 @@
 <wb-header></wb-header>
-<wb-products class="p-3" [products]="products" (onSort)="sortProducts($event)"></wb-products>
-<wb-footer></wb-footer>
+<main class="container-fluid">
+  <wb-filter (onSort)="handleSort($event)">
+  </wb-filter>
+  <wb-products class="p-3"></wb-products>
+</main>
+<wb-footer log *looper="values">
+  <p social>Social Presence</p>
+  <p brand>Weekend Baker</p>
+  <p rights>All rights reserved.</p>
+</wb-footer>

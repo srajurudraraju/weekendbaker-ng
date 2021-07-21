@@ -1,15 +1,42 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from '../types/product';
 
 @Component({
   selector: 'wb-products',
-  template: `<wb-filter (onSort)="this.onSort.emit($event)"></wb-filter>
-    <wb-product-list [products]="products"></wb-product-list>`,
+  template: `<wb-product-list
+    [products]="products"
+    [test]="testvalue"
+  ></wb-product-list>`,
 })
 export class ProductsComponent {
-  @Input()
-  products: Product[] = [];
+  products: Product[] = [
+    {
+      name: 'Cheesecake',
+      price: 20.99,
+    },
+    {
+      name: 'Cupcakes',
+      price: 4.99,
+    },
+    {
+      name: 'Bento Cakes',
+      price: 14.99,
+    },
+    {
+      name: 'Cookies',
+      price: 5.99,
+    },
+  ];
 
-  @Output()
-  onSort: EventEmitter<boolean> = new EventEmitter();
+  testvalue: string = 'testing';
+
+  sortProducts(isAsc: boolean) {
+    if (isAsc) {
+      this.products = this.products.sort((a, b) => a.price - b.price);
+    } else {
+      this.products = this.products.sort((a, b) => b.price - a.price);
+    }
+
+    this.testvalue = this.testvalue + Math.random();
+  }
 }
