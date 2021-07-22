@@ -4,8 +4,8 @@
   </wb-filter>
   <wb-products class="p-3"></wb-products>
 </main>
-<wb-footer log *looper="values">
-  <p social>Social Presence</p>
+<wb-footer log *looper="let value of values">
+  <p social>Social Presence - {{value.id}} {{value.text}}</p>
   <p brand>Weekend Baker</p>
   <p rights>All rights reserved.</p>
 </wb-footer>

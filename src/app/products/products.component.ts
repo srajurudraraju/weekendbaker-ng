@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../services/product.service';
 import { Product } from '../types/product';
 
 @Component({
@@ -8,25 +9,9 @@ import { Product } from '../types/product';
     [test]="testvalue"
   ></wb-product-list>`,
 })
-export class ProductsComponent {
-  products: Product[] = [
-    {
-      name: 'Cheesecake',
-      price: 20.99,
-    },
-    {
-      name: 'Cupcakes',
-      price: 4.99,
-    },
-    {
-      name: 'Bento Cakes',
-      price: 14.99,
-    },
-    {
-      name: 'Cookies',
-      price: 5.99,
-    },
-  ];
+export class ProductsComponent implements OnInit {
+  constructor(private service: ProductService) {}
+  products: Product[] = [];
 
   testvalue: string = 'testing';
 
@@ -38,5 +23,18 @@ export class ProductsComponent {
     }
 
     this.testvalue = this.testvalue + Math.random();
+  }
+
+  ngOnInit() {
+    this.products = this.service.getAllProducts();
+
+    this.service.obsProducts.subscribe(
+      (prods) => {
+        console.log('Recieved new products: ', prods);
+        this.products = prods;
+      },
+      (err) => console.log('Error', err),
+      () => console.log('Complete')
+    );
   }
 }

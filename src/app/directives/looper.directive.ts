@@ -11,16 +11,20 @@ import {
 })
 export class LooperDirective implements OnInit {
   @Input()
-  looper: any[] = [];
+  looperOf: any[] = [];
   constructor(
     private viewContainer: ViewContainerRef,
     private template: TemplateRef<any>
   ) {}
 
   ngOnInit() {
-    console.log('Looper:', this.looper);
-    this.looper.forEach((value) =>
-      this.viewContainer.createEmbeddedView(this.template)
+    console.log('Looper:', this.looperOf);
+    this.looperOf.forEach((value, index) =>
+      this.viewContainer.createEmbeddedView(
+        this.template,
+        { $implicit: value },
+        index
+      )
     );
   }
 }
