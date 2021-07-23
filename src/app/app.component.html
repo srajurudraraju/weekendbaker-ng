@@ -1,11 +1,10 @@
 <wb-header></wb-header>
 <main class="container-fluid">
-  <wb-filter (onSort)="handleSort($event)">
-  </wb-filter>
-  <wb-products class="p-3"></wb-products>
+  <router-outlet>
+  </router-outlet>
 </main>
-<wb-footer log *looper="let value of values">
-  <p social>Social Presence - {{value.id}} {{value.text}}</p>
+<wb-footer>
+  <p social>Social Presence</p>
   <p brand>Weekend Baker</p>
   <p rights>All rights reserved.</p>
 </wb-footer>

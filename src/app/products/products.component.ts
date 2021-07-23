@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ProductService } from '../services/product.service';
 import { Product } from '../types/product';
 
 @Component({
   selector: 'wb-products',
-  template: `<wb-product-list [products]="products"></wb-product-list>`,
+  template: ` <wb-filter (onSort)="sortProducts($event)"> </wb-filter>
+    <wb-product-list [products]="products"></wb-product-list>`,
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   constructor(private service: ProductService) {}
   products: Product[] = [];
+  productSubscription?: Subscription;
 
   sortProducts(isAsc: boolean) {
     if (isAsc) {
@@ -19,8 +22,15 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getAllProducts().subscribe((res) => {
-      this.products = res;
-    });
+    this.productSubscription = this.service
+      .getAllProducts()
+      .subscribe((res) => {
+        this.products = res;
+      });
+  }
+
+  ngOnDestroy() {
+    //Cleanup
+    this.productSubscription?.unsubscribe();
   }
 }

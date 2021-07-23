@@ -17,7 +17,11 @@ import { SocialComponent } from './footer/social/social.component';
 import { CopyrightComponent } from './footer/copyright/copyright.component';
 import { LogDirective } from './directives/log.directive';
 import { LooperDirective } from './directives/looper.directive';
-
+import { WBRoutingModule } from './routing/routing.module';
+import { FourOhFourComponent } from './404/404.component';
+import { AboutComponent } from './about/about.component';
+import { ProductDetailsComponent } from './products/product-details/product.detail.component';
+import { ProductReviewsComponent } from './products/product-details/product.reviews.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +38,12 @@ import { LooperDirective } from './directives/looper.directive';
     CopyrightComponent,
     LogDirective,
     LooperDirective,
+    FourOhFourComponent,
+    AboutComponent,
+    ProductDetailsComponent,
+    ProductReviewsComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, WBRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -7,11 +7,17 @@ import { Product } from '../types/product';
   providedIn: 'root',
 })
 export class ProductService {
-  readonly url = 'https://fakestoreapi.com/products';
+  readonly baseUrl = 'https://wbapi.getsandbox.com';
 
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url);
+    let url = `${this.baseUrl}/products`;
+    return this.http.get<Product[]>(url);
+  }
+
+  getProduct(id: string): Observable<Product> {
+    let url = `${this.baseUrl}/product/${id}`;
+    return this.http.get<Product>(url);
   }
 }

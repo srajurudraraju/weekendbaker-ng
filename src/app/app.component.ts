@@ -8,20 +8,4 @@ import { ProductsComponent } from './products/products.component';
 })
 export class AppComponent {
   title = 'WeekendBaker by PC';
-  values = [
-    {
-      id: 1,
-      text: 'One',
-    },
-    {
-      id: 2,
-      text: 'Two',
-    },
-  ];
-  @ViewChild(ProductsComponent)
-  productList?: ProductsComponent;
-
-  handleSort(isAsc: boolean) {
-    this.productList?.sortProducts(isAsc);
-  }
 }
