@@ -1,0 +1,35 @@
+<nav class="header navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <wb-brand></wb-brand>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- <wb-menu [menu]="menu"></wb-menu> -->
+     
+        <li *ngFor="let menu of menu">
+          <a *ngIf="!menu.isDropDownMenu" class='text-muted nav-link' href="#"><span>{{ menu.text }}</span></a>
+    
+          <a href='{{menu.dropDownTarget}}' *ngIf="menu.isDropDownMenu" class='text-muted nav-link'
+            data-toggle='collapse' data-target='#{{menu.dropDownTarget}}' [attr.aria-controls]='menu.dropDownTarget'
+            attr.aria-label='Toggle {{menu.dropDownTarget}}'
+            aria-expanded='true'><span>{{ menu.text }}</span></a>
+          <div *ngIf="menu.isDropDownMenu" class="collapse" [id]="menu.dropDownTarget">
+            <ul class=" list-unstyled border-left border-primary border-thick">
+              <li *ngFor="let subMenu of menu.subMenuList">
+                <a class='text-muted ml-5 nav-link' href="#"><span>{{ subMenu }}</span></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+     
+      
+    </div>
+    <form class="d-flex">
+      <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search"
+        [(ngModel)]="search">
+      <button class="btn btn-primary" type="submit" (click)="doSearch()">Search</button>
+    </form>
+  </div>
+</nav>
